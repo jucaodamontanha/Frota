@@ -24,12 +24,22 @@ public class Manutencao {
     @Enumerated(EnumType.STRING)
     private StatusManutencao status = StatusManutencao.ABERTA;
 
+    private LocalDateTime dataFinalizacao;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public LocalDateTime getDataFinalizacao() {
+        return dataFinalizacao;
+    }
+
+    public void setDataFinalizacao(LocalDateTime dataFinalizacao) {
+        this.dataFinalizacao = dataFinalizacao;
     }
 
     public Veiculo getVeiculo() {

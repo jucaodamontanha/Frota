@@ -3,9 +3,11 @@ package com.frota.repository;
 import com.frota.model.Manutencao;
 import com.frota.model.enums.StatusManutencao;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface ManutencaoRepository extends JpaRepository<Manutencao, Long> {
@@ -15,5 +17,15 @@ public interface ManutencaoRepository extends JpaRepository<Manutencao, Long> {
 
     // Busca pelo status da manutenção (ABERTA, EM_EXECUCAO, etc)
     List<Manutencao> findByStatus(StatusManutencao status);
+
+
+    // Consulta para contar manutenções finalizadas agrupadas por mês
+    @Query("SELECT new map(month(m.dataFinalizacao) as mes, count(m) as total) " +
+            "FROM Manutencao m " +
+            "WHERE m.status = 'FINALIZADA' " +
+            "GROUP BY month(m.dataFinalizacao)")
+    List<Map<String, Object>> countFinalizadasPorMes();
+
+    long countByStatus(StatusManutencao status);
 
 }
