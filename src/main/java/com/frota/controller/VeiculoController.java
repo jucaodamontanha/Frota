@@ -13,7 +13,7 @@ import java.util.List;
 
     @RestController
     @RequestMapping("/api/veiculos")
-    @CrossOrigin(origins = "http://localhost:5173") // Libera para o React (Vite)
+    @CrossOrigin(origins = "*")
     public class VeiculoController {
 
         @Autowired

@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/orcamentos")
-@CrossOrigin(origins = "*") // Permite que o React acesse a API
+@CrossOrigin(origins = "*")
 public class OrcamentoController {
 
     @Autowired
